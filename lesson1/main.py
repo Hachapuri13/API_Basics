@@ -1,12 +1,7 @@
 import requests
 
 
-CHEREPOVETS = "Череповец"
-LONDON = "Лондон"
-SHEREMETYEVO_AP = "аэропорт Шереметьево"
-
-
-def weather(city):
+def get_weather(city):
     payload = {'lang': 'ru', 'nTqM': ''}
     url_template = 'https://wttr.in/{}'
     url = url_template.format(city)
@@ -16,7 +11,12 @@ def weather(city):
     return response.text
 
 
+def main():
+    places = ["Череповец", "Лондон", "аэропорт Шереметьево"]
+
+    for city in places:
+        print(get_weather(city))
+
+
 if __name__ == "__main__":
-    print(weather(CHEREPOVETS))
-    print(weather(LONDON))
-    print(weather(SHEREMETYEVO_AP))
+    main()
